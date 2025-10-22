@@ -502,8 +502,8 @@ jobs:
 
             * Always start by setting your node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/components/${{env.name}}/${{env.name}}Form.js`
@@ -574,8 +574,8 @@ jobs:
 
             * Always start by setting the node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/components/${{env.name}}/${{env.name}}Form.js`
@@ -700,8 +700,8 @@ jobs:
             
             * Always start by setting your node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/components/Nav/AppNavbar.js`
@@ -781,8 +781,8 @@ jobs:
                   
             * Always start by setting your node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/pages/${{env.name}}/${{env.name}}CreatePage.js`
@@ -868,8 +868,8 @@ jobs:
 
             * Always start by setting your node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/pages/${{env.name}}/${{env.name}}IndexPage.js`
@@ -945,8 +945,8 @@ jobs:
 
             * Always start by setting the node version with ${{env.NVM_USE}}
             * To run storybook locally: `npm run storybook`.
-            * To run tests locally: `npm test`.
-            * Quickly test coverage locally: `npm run coverage`
+            * To run tests and check test coverage locally: `npm test`.
+            * To fix formatting with `prettier`: `npm run format`
             * Check linting locally: `npx eslint --fix .`
             * Check mutation coverage locally (slow): `npx stryker run`
             * Check mutation coverage of single file (faster): `npx stryker run -m src/main/pages/${{env.name}}/${{env.name}}EditPage.js`
