@@ -30,7 +30,7 @@ jobs:
          java-version-file: ./.java-version
   
     - name: Build javadoc
-      run: mvn -DskipTests javadoc:javadoc
+      run: mvn -ntp -B -DskipTests javadoc:javadoc
 
     - name: Deploy 🚀    
       if: always() # always upload artifacts, even if tests fail

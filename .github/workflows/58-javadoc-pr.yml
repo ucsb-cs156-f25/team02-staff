@@ -77,7 +77,7 @@ jobs:
     - name: Build javadoc
       run: |
          mkdir -p target/reports/apidocs
-         mvn -DskipTests javadoc:javadoc
+         mvn -ntp -B -DskipTests javadoc:javadoc
  
     - name: Deploy 🚀    
       if: always() # always upload artifacts, even if tests fail
