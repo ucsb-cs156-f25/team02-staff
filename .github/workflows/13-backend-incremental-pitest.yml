@@ -52,7 +52,7 @@ jobs:
         [ -f "$historyFile" ] && cp $historyFile target/pit-history/history.bin
 
     - name: Build with Maven
-      run: mvn -B test 
+      run: mvn -ntp -B test 
     - name: Pitest
       run: mvn pitest:mutationCoverage -DmutationThreshold=100 
     - name: Upload Pitest History to Artifacts
