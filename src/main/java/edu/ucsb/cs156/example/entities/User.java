@@ -10,10 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * This is a JPA entity that represents a user.
- */
-
+/** This is a JPA entity that represents a user. */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,6 +20,7 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
   private String email;
   private String googleSub;
   private String pictureUrl;

@@ -9,10 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * This is a JPA entity that represents a restaurant.
- */
-
+/** This is a JPA entity that represents a restaurant. */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

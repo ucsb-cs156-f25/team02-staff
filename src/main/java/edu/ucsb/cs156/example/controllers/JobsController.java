@@ -84,7 +84,6 @@ public class JobsController extends ApiController {
     return jobService.runAsJob(testJob);
   }
 
-
   @Operation(summary = "Get long job logs")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
   @GetMapping("/logs/{id}")
@@ -92,6 +91,4 @@ public class JobsController extends ApiController {
 
     return jobService.getJobLogs(id);
   }
-
-
 }

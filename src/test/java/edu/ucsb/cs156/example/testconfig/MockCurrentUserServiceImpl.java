@@ -2,7 +2,6 @@ package edu.ucsb.cs156.example.testconfig;
 
 import edu.ucsb.cs156.example.entities.User;
 import edu.ucsb.cs156.example.services.CurrentUserServiceImpl;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,41 +21,41 @@ public class MockCurrentUserServiceImpl extends CurrentUserServiceImpl {
     String givenName = "Fake";
     String familyName = "User";
     boolean emailVerified = true;
-    String locale="";
-    String hostedDomain="example.org";
-    boolean admin=false;
+    String locale = "";
+    String hostedDomain = "example.org";
+    boolean admin = false;
 
     org.springframework.security.core.userdetails.User user = null;
-
 
     if (principal instanceof org.springframework.security.core.userdetails.User) {
       user = (org.springframework.security.core.userdetails.User) principal;
       googleSub = "fake_" + user.getUsername();
       email = user.getUsername() + "@example.org";
-      pictureUrl = "https://example.org/" +  user.getUsername() + ".jpg";
+      pictureUrl = "https://example.org/" + user.getUsername() + ".jpg";
       fullName = "Fake " + user.getUsername();
       givenName = "Fake";
       familyName = user.getUsername();
       emailVerified = true;
-      locale="";
-      hostedDomain="example.org";
-      admin= (user.getUsername().equals("admin"));
+      locale = "";
+      hostedDomain = "example.org";
+      admin = (user.getUsername().equals("admin"));
     }
 
-    User u = User.builder()
-    .googleSub(googleSub)
-    .email(email)
-    .pictureUrl(pictureUrl)
-    .fullName(fullName)
-    .givenName(givenName)
-    .familyName(familyName)
-    .emailVerified(emailVerified)
-    .locale(locale)
-    .hostedDomain(hostedDomain)
-    .admin(admin)
-    .id(1L)
-    .build();
-    
+    User u =
+        User.builder()
+            .googleSub(googleSub)
+            .email(email)
+            .pictureUrl(pictureUrl)
+            .fullName(fullName)
+            .givenName(givenName)
+            .familyName(familyName)
+            .emailVerified(emailVerified)
+            .locale(locale)
+            .hostedDomain(hostedDomain)
+            .admin(admin)
+            .id(1L)
+            .build();
+
     return u;
   }
 
@@ -70,5 +69,4 @@ public class MockCurrentUserServiceImpl extends CurrentUserServiceImpl {
 
     return null;
   }
-
 }
