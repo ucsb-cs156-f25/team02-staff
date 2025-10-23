@@ -1,5 +1,7 @@
 package edu.ucsb.cs156.example;
 
+import edu.ucsb.cs156.example.services.wiremock.WiremockService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,23 +13,18 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import edu.ucsb.cs156.example.services.wiremock.WiremockService;
-import lombok.extern.slf4j.Slf4j;
-
-/**
- * The ExampleApplication class is the main entry point for the application.
- */
+/** The ExampleApplication class is the main entry point for the application. */
 @SpringBootApplication
 @Slf4j
 @EnableAsync // for @Async annotation for JobsService
 @EnableScheduling // for @Scheduled annotation for JobsService
 public class ExampleApplication {
 
-  @Autowired
-  WiremockService wiremockService;
+  @Autowired WiremockService wiremockService;
 
   /**
-   * When using the wiremock profile, this method will call the code needed to set up the wiremock services
+   * When using the wiremock profile, this method will call the code needed to set up the wiremock
+   * services
    */
   @Profile("wiremock")
   @Bean
@@ -39,9 +36,7 @@ public class ExampleApplication {
     };
   }
 
-  /**
-   * Hook that can be used to set up any services needed for development
-   */
+  /** Hook that can be used to set up any services needed for development */
   @Profile("development")
   @Bean
   public ApplicationRunner developmentApplicationRunner() {
@@ -52,8 +47,9 @@ public class ExampleApplication {
   }
 
   /**
-   *  See: https://www.baeldung.com/spring-git-information
-   *  @return a propertySourcePlaceholderConfigurer for git.properties
+   * See: https://www.baeldung.com/spring-git-information
+   *
+   * @return a propertySourcePlaceholderConfigurer for git.properties
    */
   @Bean
   public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
@@ -64,8 +60,9 @@ public class ExampleApplication {
     return propsConfig;
   }
 
-   /**
+  /**
    * The main method is the entry point for the application.
+   *
    * @param args command line arguments, typically unused for Spring Boot applications
    */
   public static void main(String[] args) {
