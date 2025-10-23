@@ -15,6 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -34,10 +35,10 @@ import static org.mockito.Mockito.when;
 @Import(TestConfig.class)
 public class UCSBDiningCommonsControllerTests extends ControllerTestCase {
 
-        @MockBean
+        @MockitoBean
         UCSBDiningCommonsRepository ucsbDiningCommonsRepository;
 
-        @MockBean
+        @MockitoBean
         UserRepository userRepository;
 
         // Authorization tests for /api/ucsbdiningcommons/admin/all
