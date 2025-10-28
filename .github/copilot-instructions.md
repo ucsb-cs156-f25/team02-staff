@@ -148,7 +148,7 @@ PRODUCTION=true mvn -DskipTests clean dependency:list install
 - **Node Version**: 22.18.0+ required
 - **UI Library**: React Bootstrap 5
 - **State Management**: TanStack Query (React Query)
-- **Testing**: Jest, React Testing Library
+- **Testing**: Vite, React Testing Library
 - **Documentation**: Storybook
 - **Build Tool**: npm
 
