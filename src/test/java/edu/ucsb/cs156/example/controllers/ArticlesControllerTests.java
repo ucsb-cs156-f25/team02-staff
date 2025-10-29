@@ -182,7 +182,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
         Article.builder()
             .title("Article")
             .url("url")
-            .explanation("article explanation")
+            .explanation("explanation")
             .email("katelarrick@ucsb.edu")
             .dateAdded(ldt1)
             .build();
@@ -193,7 +193,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
     MvcResult response =
         mockMvc
             .perform(
-                post("/api/articles/post?title=firstArticle&url=https://youtu.be/XBCJcRAsZtQ?si=ycJvYKvLbBYaQHUT&explanation=first&email=yibinjiang@ucsb.edu&dateAdded=2022-01-03T00:00:00")
+                post("/api/articles/post?title=Article&url=url&explanation=explanation&email=katelarrick@ucsb.edu&dateAdded=2022-01-03T00:00:00")
                     .with(csrf()))
             .andExpect(status().isOk())
             .andReturn();
