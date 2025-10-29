@@ -227,7 +227,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
             .title("Article edited")
             .url("url edited")
             .explanation("article explanation edited")
-            .email("katelarrick@ucsb.edu")
+            .email("test@ucsb.edu")
             .dateAdded(ldt2)
             .build();
 
