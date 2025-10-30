@@ -25,9 +25,6 @@ function ArticleForm({
     /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
   // Stryker restore Regex
 
-  // Stryker disable next-line all
-  const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
-
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       <Row>
@@ -48,18 +45,18 @@ function ArticleForm({
         )}
 
         <Col>
-        <Form.Group className="mb-3">
+          <Form.Group className="mb-3">
             <Form.Label htmlFor="title">Title</Form.Label>
             <Form.Control
               data-testid="ArticleForm-title"
               id="title"
               type="text"
               isInvalid={Boolean(errors.title)}
-                {...register("title", {
+              {...register("title", {
                 required: "Title is required.",
                 maxLength: {
-                    value: 255,
-                    message: "Max length 255 characters",
+                  value: 255,
+                  message: "Max length 255 characters",
                 },
               })}
             />

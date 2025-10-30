@@ -3,7 +3,6 @@ import ArticleForm from "main/components/Articles/ArticleForm";
 import { articlesFixtures } from "fixtures/articlesFixtures";
 import { BrowserRouter as Router } from "react-router";
 import { expect } from "vitest";
-import ArticleForm from "main/components/Articles/ArticleForm";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -19,8 +18,14 @@ vi.mock("react-router", async () => {
 describe("ArticleForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Title", "URL", "Explanation", "Email", "Date Added (iso format)"];
-    
+  const expectedHeaders = [
+    "Title",
+    "URL",
+    "Explanation",
+    "Email",
+    "Date Added (iso format)",
+  ];
+
   test("renders correctly with no initial contents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
@@ -29,13 +34,13 @@ describe("ArticleForm tests", () => {
         </Router>
       </QueryClientProvider>,
     );
-  
+
     expect(screen.getByText(/Create/)).toBeInTheDocument();
 
-    expectedHeaders.forEach( (headerText) => {
+    expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
-    } );
+    });
   });
 
   test("renders correctly when passing in one article", async () => {
@@ -44,7 +49,7 @@ describe("ArticleForm tests", () => {
         <Router>
           <ArticleForm initialContents={articlesFixtures.oneArticle} />
         </Router>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
@@ -54,8 +59,8 @@ describe("ArticleForm tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(await screen.findByTestId('ArticleForm-id')).toBeInTheDocument();
-    expect(screen.getByText('Id')).toBeInTheDocument();
+    expect(await screen.findByTestId("ArticleForm-id")).toBeInTheDocument();
+    expect(screen.getByText("Id")).toBeInTheDocument();
     expect(screen.getByTestId(/ArticleForm-id/)).toHaveValue("1");
   });
 
@@ -67,11 +72,11 @@ describe("ArticleForm tests", () => {
         </Router>
       </QueryClientProvider>,
     );
-    expect(await screen.findByTestId('ArticleForm-cancel')).toBeInTheDocument();
-    const cancelButton = screen.getByTestId('ArticleForm-cancel');
-    
+    expect(await screen.findByTestId("ArticleForm-cancel")).toBeInTheDocument();
+    const cancelButton = screen.getByTestId("ArticleForm-cancel");
+
     fireEvent.click(cancelButton);
-    
+
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
   });
 
@@ -122,7 +127,9 @@ describe("ArticleForm tests", () => {
 
     fireEvent.change(titleField, { target: { value: "Title change test" } });
     fireEvent.change(urlField, { target: { value: "katelarrick.com" } });
-    fireEvent.change(explanationField, { target: { value: "Making some changes test" } });
+    fireEvent.change(explanationField, {
+      target: { value: "Making some changes test" },
+    });
     fireEvent.change(emailField, { target: { value: "katelarrick@ucsb.edu" } });
     fireEvent.change(dateAddedField, {
       target: { value: "2022-01-02T12:00" },
@@ -131,9 +138,6 @@ describe("ArticleForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
-    expect(
-      screen.queryByText(/URL is required./),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByText(/URL is required./)).not.toBeInTheDocument();
   });
-
 });
