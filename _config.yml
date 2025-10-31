@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-f25/team02-staff
 owner: ucsb-cs156-f25
 repo_name: team02-staff
-pull_requests: []
+pull_requests: [{"author":{"id":"U_kgDOBtP22A","is_bot":false,"login":"katelarrick","name":"Kate Larrick"},"headRefName":"Kate-Articles-Table","number":68,"title":"Added ArticleTable + tests and stories","url":"https://github.com/ucsb-cs156-f25/team02-staff/pull/68"}]
