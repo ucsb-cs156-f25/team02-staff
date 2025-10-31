@@ -146,21 +146,21 @@ describe("ArticleTable tests", () => {
     });
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
-        "1",
-      );
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent(
-      "explanation 1",
+      "1",
     );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-explanation`),
+    ).toHaveTextContent("explanation 1");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-title`),
     ).toHaveTextContent("Title 1");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
-        "2",
-      );
-    expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent(
-      "explanation 2",
+      "2",
     );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-explanation`),
+    ).toHaveTextContent("explanation 2");
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-title`),
     ).toHaveTextContent("Title 2");
@@ -169,84 +169,84 @@ describe("ArticleTable tests", () => {
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
   });
 
-    test("Edit button navigates to the edit page", async () => {
-      // arrange
-      const currentUser = currentUserFixtures.adminUser;
+  test("Edit button navigates to the edit page", async () => {
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
 
-      // act - render the component
-      render(
-        <QueryClientProvider client={queryClient}>
-          <MemoryRouter>
-            <ArticleTable
-              articles={articlesFixtures.threeArticles}
-              currentUser={currentUser}
-            />
-          </MemoryRouter>
-        </QueryClientProvider>,
-      );
+    // act - render the component
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ArticleTable
+            articles={articlesFixtures.threeArticles}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
 
-      // assert - check that the expected content is rendered
-      expect(
-        await screen.findByTestId(`${testId}-cell-row-0-col-id`),
-      ).toHaveTextContent("1");
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-title`),
-      ).toHaveTextContent("Title 1");
+    // assert - check that the expected content is rendered
+    expect(
+      await screen.findByTestId(`${testId}-cell-row-0-col-id`),
+    ).toHaveTextContent("1");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-title`),
+    ).toHaveTextContent("Title 1");
 
-      const editButton = screen.getByTestId(
-        `${testId}-cell-row-0-col-Edit-button`,
-      );
-      expect(editButton).toBeInTheDocument();
+    const editButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Edit-button`,
+    );
+    expect(editButton).toBeInTheDocument();
 
-      // act - click the edit button
-      fireEvent.click(editButton);
+    // act - click the edit button
+    fireEvent.click(editButton);
 
-      // assert - check that the navigate function was called with the expected path
-      await waitFor(() =>
-        expect(mockedNavigate).toHaveBeenCalledWith("/articles/edit/1"),
-      );
-    });
+    // assert - check that the navigate function was called with the expected path
+    await waitFor(() =>
+      expect(mockedNavigate).toHaveBeenCalledWith("/articles/edit/1"),
+    );
+  });
 
-    test("Delete button calls delete callback", async () => {
-      // arrange
-      const currentUser = currentUserFixtures.adminUser;
+  test("Delete button calls delete callback", async () => {
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
 
-      const axiosMock = new AxiosMockAdapter(axios);
-      axiosMock
-        .onDelete("/api/articles")
-        .reply(200, { message: "Article deleted" });
+    const axiosMock = new AxiosMockAdapter(axios);
+    axiosMock
+      .onDelete("/api/articles")
+      .reply(200, { message: "Article deleted" });
 
-      // act - render the component
-      render(
-        <QueryClientProvider client={queryClient}>
-          <MemoryRouter>
-            <ArticleTable
-              articles={articlesFixtures.threeArticles}
-              currentUser={currentUser}
-            />
-          </MemoryRouter>
-        </QueryClientProvider>,
-      );
+    // act - render the component
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ArticleTable
+            articles={articlesFixtures.threeArticles}
+            currentUser={currentUser}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
 
-      // assert - check that the expected content is rendered
-      expect(
-        await screen.findByTestId(`${testId}-cell-row-0-col-id`),
-      ).toHaveTextContent("1");
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-title`),
-      ).toHaveTextContent("Title 1");
+    // assert - check that the expected content is rendered
+    expect(
+      await screen.findByTestId(`${testId}-cell-row-0-col-id`),
+    ).toHaveTextContent("1");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-title`),
+    ).toHaveTextContent("Title 1");
 
-      const deleteButton = screen.getByTestId(
-        `${testId}-cell-row-0-col-Delete-button`,
-      );
-      expect(deleteButton).toBeInTheDocument();
+    const deleteButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Delete-button`,
+    );
+    expect(deleteButton).toBeInTheDocument();
 
-      // act - click the delete button
-      fireEvent.click(deleteButton);
+    // act - click the delete button
+    fireEvent.click(deleteButton);
 
-      // assert - check that the delete endpoint was called
+    // assert - check that the delete endpoint was called
 
-      await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
-      expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
-    });
+    await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
+    expect(axiosMock.history.delete[0].params).toEqual({ id: 1 });
+  });
 });
